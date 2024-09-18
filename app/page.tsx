@@ -102,7 +102,7 @@ export default function AptReal() {
             </div>
           </Paper>
         </div>
-        <div className="w-full lg:mt-[200px] overflow-y-auto">
+        <div className="w-full lg:mt-[200px] max-h-96 lg:max-h-full overflow-y-auto">
          {queryObj && <ProdPanel queryObj={queryObj} addAptList={addAptList} />}
         </div>
       </div>

@@ -1,12 +1,8 @@
 import { useEffect, useRef } from 'react';
-// import billboard.js
 import bb, { scatter } from "billboard.js";
 import "billboard.js/dist/billboard.css";  // default css
 
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-
-export default function AptChart({setChartRef, clearAptList}) {
+export default function AptChart({setChartRef}) {
 
   let chartRef = useRef();
 
@@ -58,19 +54,8 @@ export default function AptChart({setChartRef, clearAptList}) {
   }, []);
 
   return (
-    <div className="my-20 ml-5 flex flex-col">
+    <div className="pt-20 pl-5 flex flex-col bg-white">
       <div id="chart2"></div>
-      <div className="px-10">
-        <IconButton aria-label="delete" size="large"
-          disabled={chartRef.current?.data.length > 0 ? false : true}
-          onClick={() => {
-            chartRef.current.unload();
-            clearAptList();
-	  }}
-	>
-          <DeleteIcon fontSize="large" />
-        </IconButton>
-      </div>
     </div>
   )
 }

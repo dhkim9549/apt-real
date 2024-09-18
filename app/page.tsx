@@ -6,7 +6,9 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import ApartmentIcon from '@mui/icons-material/Apartment';
-import { NumericFormat } from 'react-number-format';
+
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import ProdPanel from './prod-panel';
 import AptChart from './apt-chart';
@@ -18,6 +20,7 @@ export default function AptReal() {
 
   let [aptNm, setAptNm] = useState();
   let [queryObj, setQueryObj] = useState();
+  let [dataLen, setDataLen] = useState(0);
 
   let aptListRef = useRef([]);
   let chartRef = useRef();
@@ -58,6 +61,7 @@ export default function AptReal() {
       chartData.columns.push(xArr);
       chartData.columns.push(yArr);
       chartRef.current.load(chartData);
+      setDataLen(chartRef.current.data().length);
     });
   }
 
@@ -67,6 +71,7 @@ export default function AptReal() {
 
   function clearAptList() {
     aptListRef.current = [];
+    setDataLen(chartRef.current.data().length);
   }
 
   return (
@@ -97,12 +102,23 @@ export default function AptReal() {
             </div>
           </Paper>
         </div>
-        <div className="w-full max-h-96 lg:mt-[200px] overflow-y-auto">
+        <div className="w-full lg:mt-[200px] overflow-y-auto">
          {queryObj && <ProdPanel queryObj={queryObj} addAptList={addAptList} />}
         </div>
       </div>
-      <div className="w-full lg:w-[750px] bg-white">
-        <AptChart setChartRef={setChartRef} clearAptList={clearAptList} />
+      <div className="w-full lg:w-[750px] bg-slate-100">
+        <AptChart setChartRef={setChartRef} />
+        <div className="px-10 pb-7 bg-white">
+          <IconButton aria-label="delete" size="large"
+            disabled={dataLen > 0 ? false : true}
+            onClick={() => {
+              chartRef.current.unload();
+              clearAptList();
+            }}
+          >
+            <DeleteIcon fontSize="large" />
+          </IconButton>
+        </div>
 	<Footer />
       </div>
     </div>

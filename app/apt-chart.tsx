@@ -8,6 +8,11 @@ export default function AptChart({setChartRef}) {
 
   useEffect(() => {
 
+    let valuesArr = [];
+    for(let y = 2007; y < 2025; y++) {
+      valuesArr.push(y + '-01-01');
+    }
+
     var chart2 = bb.generate({
       data: {
         xs: [],
@@ -19,6 +24,7 @@ export default function AptChart({setChartRef}) {
           type: "timeseries",
           tick: {
             format: "%Y-%m-%d",
+	    values: valuesArr
           },
         },
         y: {

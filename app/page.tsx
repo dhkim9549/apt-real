@@ -61,6 +61,10 @@ export default function AptReal() {
       chartData.columns.push(xArr);
       chartData.columns.push(yArr);
       chartRef.current.load(chartData);
+      chartRef.current.resize({
+        width: Math.min(700, window.innerWidth - 50),
+        height: 450
+      });
       setDataLen(chartRef.current.data().length);
     });
   }

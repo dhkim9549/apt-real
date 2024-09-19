@@ -46,7 +46,7 @@ export default function AptChart({setChartRef}) {
       },
       size: {
         width: Math.min(700, window.innerWidth - 50),
-        height: 400 
+        height: 450 
       },
       padding: {
         left: 50
@@ -56,6 +56,13 @@ export default function AptChart({setChartRef}) {
 
     chartRef.current = chart2;
     setChartRef(chart2);
+
+    window.addEventListener('resize', function(event) {
+      chartRef.current.resize({
+        width: Math.min(700, window.innerWidth - 50),
+        height: 450
+      });
+    }, true);
 
   }, []);
 

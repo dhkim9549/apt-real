@@ -29,7 +29,7 @@ export default function AptChart({setChartRef}) {
         },
         y: {
           label: {
-            text: "만원",
+            text: "억원",
             position: ""
           },
 	  min: 0,
@@ -68,7 +68,7 @@ export default function AptChart({setChartRef}) {
   }, []);
 
   return (
-    <div className="pt-20 pl-5 flex flex-col bg-white">
+    <div className="pt-20 px-5 flex flex-col bg-white">
       <div id="chart2"></div>
     </div>
   )

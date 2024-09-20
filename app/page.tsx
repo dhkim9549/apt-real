@@ -51,12 +51,12 @@ export default function AptReal() {
         xs: {},
         columns: []
       };
-      chartData.xs[apt.aptNm + apt.area] = apt.aptNm + apt.area + '_x';
-      let xArr = [apt.aptNm + apt.area + '_x'];
-      let yArr = [apt.aptNm + apt.area];
+      chartData.xs[apt.aptNm + ' ' + apt.area] = apt.aptNm + ' ' + apt.area + '_x';
+      let xArr = [apt.aptNm + ' ' + apt.area + '_x'];
+      let yArr = [apt.aptNm + ' ' + apt.area];
       apt.trd.forEach((trd) => {
         xArr.push(trd.ctrtDy.substring(0, 4) + '-' + trd.ctrtDy.substring(4, 6) + '-' + trd.ctrtDy.substring(6, 8));
-        yArr.push(trd.prc);
+        yArr.push(trd.prc / 10000);
       });
       chartData.columns.push(xArr);
       chartData.columns.push(yArr);

@@ -62,7 +62,7 @@ export default function AptReal() {
       chartData.columns.push(yArr);
       chartRef.current.load(chartData);
       chartRef.current.resize({
-        width: Math.min(700, window.innerWidth - 50),
+        width: Math.min(700, Math.min(window.screenWidth, window.innerWidth) - 50),
         height: 450
       });
       setDataLen(chartRef.current.data().length);
@@ -88,23 +88,25 @@ export default function AptReal() {
               APT-REAL
             </blockquote>
           </div>
-          <Paper className="p-2 w-80 flex flex-row justify-center gap-2">
-            <TextField
-              id="aptNm" label="aptNm" variant="filled" size="small"
-              className=""
-              inputProps={{min: 0, maxLength:20 }}
-              onChange={(e) => {
-                setAptNm(e.target.value);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  setQuery();
-              }}}
-            />
-            <div className="flex flex-col justify-center">
-              <Button variant="contained" size="large" className="w-20" onClick={setQuery}>조회</Button>
-            </div>
-          </Paper>
+	  <div className="w-screen px-4 lg:w-80 lg:px-0">
+            <Paper className="p-2 w-full flex flex-row justify-center gap-2">
+              <TextField
+                id="aptNm" label="aptNm" variant="filled" size="small"
+                className="w-full"
+                inputProps={{min: 0, maxLength:20 }}
+                onChange={(e) => {
+                  setAptNm(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setQuery();
+                }}}
+              />
+              <div className="flex flex-col justify-center">
+                <Button variant="contained" size="large" className="w-20" onClick={setQuery}>조회</Button>
+              </div>
+            </Paper>
+	  </div>
         </div>
         <div className="w-full lg:mt-[200px] max-h-96 lg:max-h-full overflow-y-auto">
          {queryObj && <ProdPanel queryObj={queryObj} addAptList={addAptList} />}

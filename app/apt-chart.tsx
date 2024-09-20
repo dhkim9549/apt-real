@@ -45,11 +45,12 @@ export default function AptChart({setChartRef}) {
         }
       },
       size: {
-        width: Math.min(700, window.innerWidth - 50),
+        width: Math.min(700, Math.min(window.screenWidth, window.innerWidth) - 50),
         height: 450 
       },
       padding: {
-        left: 50
+        left: 50,
+	right: 10
       },
       bindto: "#chart2"
     });
@@ -59,7 +60,7 @@ export default function AptChart({setChartRef}) {
 
     window.addEventListener('resize', function(event) {
       chartRef.current.resize({
-        width: Math.min(700, window.innerWidth - 50),
+        width: Math.min(700, Math.min(window.screenWidth, window.innerWidth) - 50),
         height: 450
       });
     }, true);

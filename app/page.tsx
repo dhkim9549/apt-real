@@ -82,18 +82,23 @@ export default function AptReal() {
     <div className="flex flex-col lg:flex-row lg:justify-center bg-white">
       <div className="flex flex-col items-center w-full lg:w-[340px] pb-8 lg:h-screen bg-slate-100">
         <div className="bg-slate-100 lg:fixed mt-8 lg:mt-0 lg:top-8 z-10">
-          <div className="m-4 p-4 flex flex-row justify-center items-center">
-	    <ApartmentIcon />
-            <blockquote className="ml-2 text-2xl font-bold italic text-slate-900">
-              APT-REAL
-            </blockquote>
-          </div>
+	  <div className="m-4 p-4 flex flex-col items-center">
+            <div className="flex flex-row justify-center items-center">
+	      <ApartmentIcon />
+              <blockquote className="ml-2 text-2xl font-bold italic text-slate-900">
+                APT-REAL
+              </blockquote>
+            </div>
+	    <div>
+	      아파트 실거래가 비교
+	    </div>
+	  </div>
 	  <div className="w-screen px-4 lg:w-80 lg:px-0">
             <Paper className="p-2 w-full flex flex-row justify-center gap-2">
               <TextField
-                id="aptNm" label="aptNm" variant="filled" size="small"
+                id="aptNm" label="주택명 또는 지역명" variant="filled" size="small"
                 className="w-full"
-                inputProps={{min: 0, maxLength:20 }}
+                inputProps={{min: 1, maxLength:20 }}
                 onChange={(e) => {
                   setAptNm(e.target.value);
                 }}

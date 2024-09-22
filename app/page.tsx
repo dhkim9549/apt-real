@@ -49,7 +49,8 @@ export default function AptReal() {
     .then((apt) => {
       let chartData = {
         xs: {},
-        columns: []
+        columns: [],
+        resizeAfter: true
       };
       chartData.xs[apt.aptNm + ' ' + apt.area] = apt.aptNm + ' ' + apt.area + '_x';
       let xArr = [apt.aptNm + ' ' + apt.area + '_x'];
@@ -61,10 +62,6 @@ export default function AptReal() {
       chartData.columns.push(xArr);
       chartData.columns.push(yArr);
       chartRef.current.load(chartData);
-      chartRef.current.resize({
-        width: Math.min(700, Math.min(window.screenWidth, window.innerWidth) - 50),
-        height: 450
-      });
       setDataLen(chartRef.current.data().length);
     });
   }

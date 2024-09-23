@@ -8,7 +8,8 @@ export async function getAptInfo(queryObj) {
   const API_URL = process.env.API_SERVER_URL;
 
   let res = await fetch(API_URL + "/api/get-apt-info?"
-    + "&aptNm=" + queryObj.aptNm
+    + "&aptNm=" + queryObj.aptNm,
+    { next: { revalidate: 600 } }
   );
 
   let resJson = await res.json();
@@ -30,7 +31,8 @@ export async function getAptTrd(queryObj) {
   let res = await fetch(API_URL + "/api/get-apt-trd?"
     + "&sggu=" + queryObj.sggu
     + "&aptNm=" + queryObj.aptNm
-    + "&area=" + queryObj.area
+    + "&area=" + queryObj.area,
+    { next: { revalidate: 600 } }
   );
 
   let resJson = await res.json();

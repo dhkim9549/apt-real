@@ -9,12 +9,16 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import LooksOneIcon from '@mui/icons-material/LooksOne';
+import CachedIcon from '@mui/icons-material/Cached';
 
 import ProdPanel from './prod-panel';
 import AptChart from './apt-chart';
 import { getAptTrd } from './get-data';
 
 import Footer from './footer.tsx'
+
+import { zoom } from 'billboard.js'
 
 export default function AptReal() {
 
@@ -24,6 +28,7 @@ export default function AptReal() {
 
   let aptListRef = useRef([]);
   let chartRef = useRef();
+  let minXRef = useRef('00010101');
 
   function setQuery() {
     setQueryObj({aptNm});
@@ -47,22 +52,7 @@ export default function AptReal() {
       return x;
     })
     .then((apt) => {
-      let chartData = {
-        xs: {},
-        columns: [],
-        resizeAfter: true
-      };
-      chartData.xs[apt.aptNm + ' ' + apt.area] = apt.aptNm + ' ' + apt.area + '_x';
-      let xArr = [apt.aptNm + ' ' + apt.area + '_x'];
-      let yArr = [apt.aptNm + ' ' + apt.area];
-      apt.trd.forEach((trd) => {
-        xArr.push(trd.ctrtDy.substring(0, 4) + '-' + trd.ctrtDy.substring(4, 6) + '-' + trd.ctrtDy.substring(6, 8));
-        yArr.push(trd.prc / 10000);
-      });
-      chartData.columns.push(xArr);
-      chartData.columns.push(yArr);
-      chartRef.current.load(chartData);
-      setDataLen(chartRef.current.data().length);
+      loadAptChart(apt);
     });
   }
 
@@ -73,6 +63,34 @@ export default function AptReal() {
   function clearAptList() {
     aptListRef.current = [];
     setDataLen(chartRef.current.data().length);
+  }
+
+  function loadAptChart(apt) {
+    let chartData = {
+      xs: {},
+      columns: [],
+      resizeAfter: true
+    };
+    chartData.xs[apt.aptNm + ' ' + apt.area] = apt.aptNm + ' ' + apt.area + '_x';
+    let xArr = [apt.aptNm + ' ' + apt.area + '_x'];
+    let yArr = [apt.aptNm + ' ' + apt.area];
+    apt.trd.forEach((trd) => {
+      if(trd.ctrtDy >= minXRef.current) {
+        xArr.push(trd.ctrtDy.substring(0, 4) + '-' + trd.ctrtDy.substring(4, 6) + '-' + trd.ctrtDy.substring(6, 8));
+        yArr.push(trd.prc / 10000);
+      }
+    });
+    chartData.columns.push(xArr);
+    chartData.columns.push(yArr);
+    chartRef.current.load(chartData);
+    setDataLen(chartRef.current.data().length);
+  }
+
+  function reloadChart() {
+    chartRef.current.unload();
+    aptListRef.current.forEach((apt) => {
+      loadAptChart(apt);
+    });
   }
 
   return (
@@ -125,6 +143,24 @@ export default function AptReal() {
             }}
           >
             <DeleteIcon fontSize="large" />
+          </IconButton>
+          <IconButton aria-label="delete" size="large"
+            disabled={dataLen > 0 ? false : true}
+            onClick={() => {
+              minXRef.current = '20230101';
+	      reloadChart();
+            }}
+          >
+            <LooksOneIcon fontSize="large" />
+          </IconButton>
+          <IconButton aria-label="delete" size="large"
+            disabled={dataLen > 0 ? false : true}
+            onClick={() => {
+              minXRef.current = '00010101';
+	      reloadChart();
+            }}
+          >
+            <CachedIcon fontSize="large" />
           </IconButton>
         </div>
 	<Footer />

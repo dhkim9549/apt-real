@@ -14,8 +14,6 @@ export async function getAptInfo(queryObj) {
 
   let resJson = await res.json();
 
-  console.log("resJson = " + JSON.stringify(resJson));
-
   console.log("getAptInfo() end...");
  
   return resJson;
@@ -36,8 +34,6 @@ export async function getAptTrd(queryObj) {
   );
 
   let resJson = await res.json();
-
-  console.log("resJson = " + JSON.stringify(resJson));
 
   console.log("getAptTrd() end...");
  

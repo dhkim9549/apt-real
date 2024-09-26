@@ -18,8 +18,6 @@ import { getAptTrd } from './get-data';
 
 import Footer from './footer.tsx'
 
-import { zoom } from 'billboard.js'
-
 export default function AptReal() {
 
   let [aptNm, setAptNm] = useState();
@@ -28,7 +26,9 @@ export default function AptReal() {
 
   let aptListRef = useRef([]);
   let chartRef = useRef();
+
   let minXRef = useRef('00010101');
+  let [minX, setMinX] = useState('00010101');
 
   function setQuery() {
     setQueryObj({aptNm});
@@ -140,24 +140,28 @@ export default function AptReal() {
             onClick={() => {
               chartRef.current.unload();
               clearAptList();
+              minXRef.current = '00010101';
+              setMinX('00010101');
             }}
           >
             <DeleteIcon fontSize="large" />
           </IconButton>
           <IconButton aria-label="delete" size="large"
-            disabled={dataLen > 0 ? false : true}
-            onClick={() => {
+            disabled={(dataLen > 0 && minX != '20230101') ? false : true}
+             onClick={() => {
               minXRef.current = '20230101';
-	      reloadChart();
+              setMinX('20230101');
+              reloadChart();
             }}
           >
             <LooksOneIcon fontSize="large" />
           </IconButton>
           <IconButton aria-label="delete" size="large"
-            disabled={dataLen > 0 ? false : true}
-            onClick={() => {
+            disabled={(dataLen > 0 && minX != '00010101') ? false : true}
+             onClick={() => {
               minXRef.current = '00010101';
-	      reloadChart();
+              setMinX('00010101');
+              reloadChart();
             }}
           >
             <CachedIcon fontSize="large" />

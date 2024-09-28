@@ -26,6 +26,7 @@ export default function AptReal() {
 
   let aptListRef = useRef([]);
   let chartRef = useRef();
+  let chartNodeRef = useRef();
 
   let minXRef = useRef('00010101');
   let [minX, setMinX] = useState('00010101');
@@ -84,14 +85,15 @@ export default function AptReal() {
     chartData.columns.push(yArr);
     chartRef.current.load(chartData);
     setDataLen(chartRef.current.data().length);
-  }
+    chartNodeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+   }
 
   function reloadChart() {
     chartRef.current.unload();
     aptListRef.current.forEach((apt) => {
       loadAptChart(apt);
     });
-  }
+ }
 
   return (
     <div className="flex flex-col lg:flex-row lg:justify-center bg-white">
@@ -132,7 +134,7 @@ export default function AptReal() {
          {queryObj && <ProdPanel queryObj={queryObj} addAptList={addAptList} />}
         </div>
       </div>
-      <div className="w-full lg:w-[750px] bg-slate-100">
+      <div ref={chartNodeRef} className="w-full lg:w-[750px] bg-slate-100">
         <AptChart setChartRef={setChartRef} />
         <div className="px-10 pb-7 bg-white">
           <IconButton aria-label="delete" size="large"

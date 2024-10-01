@@ -7,7 +7,7 @@ export default function ProdItem({prodObj, addAptList}) {
     <Paper className="w-full lg:w-72 bg-white p-4 flex flex-col">
       <div className="text-black text-xl mb-1">{prodObj.aptNm}</div>
       <div className="text-slate-800">{prodObj.sggu}</div>
-      <div className="text-slate-800 text-sm">{prodObj.cnstYr}년 준공</div>
+      <div className="text-slate-800 text-sm">{prodObj.cnstYr}년 준공, 최종거래일: {prodObj.maxCtrtDy}</div>
       <div className="mt-2 flex flex-wrap gap-2">
         {prodObj.areas &&
           prodObj.areas.map(x =>

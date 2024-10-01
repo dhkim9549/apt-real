@@ -86,7 +86,7 @@ export default function AptReal() {
     chartRef.current.load(chartData);
     setDataLen(chartRef.current.data().length);
     chartNodeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-   }
+  }
 
   function reloadChart() {
     chartRef.current.unload();

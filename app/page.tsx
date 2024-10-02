@@ -6,11 +6,9 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import ApartmentIcon from '@mui/icons-material/Apartment';
-
-import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import LooksOneIcon from '@mui/icons-material/LooksOne';
-import CachedIcon from '@mui/icons-material/Cached';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import IconButton from '@mui/material/IconButton';
 
 import ProdPanel from './prod-panel';
 import AptChart from './apt-chart';
@@ -136,7 +134,7 @@ export default function AptReal() {
       </div>
       <div ref={chartNodeRef} className="w-full lg:w-[750px] bg-slate-100">
         <AptChart setChartRef={setChartRef} />
-        <div className="px-10 pb-7 bg-white">
+        <div className="px-10 pb-7 bg-white flex flex-row justify-between">
           <IconButton aria-label="delete" size="large"
             disabled={dataLen > 0 ? false : true}
             onClick={() => {
@@ -148,26 +146,32 @@ export default function AptReal() {
           >
             <DeleteIcon fontSize="large" />
           </IconButton>
-          <IconButton aria-label="delete" size="large"
-            disabled={(dataLen > 0 && minX != '20230101') ? false : true}
-             onClick={() => {
-              minXRef.current = '20230101';
-              setMinX('20230101');
-              reloadChart();
-            }}
-          >
-            <LooksOneIcon fontSize="large" />
-          </IconButton>
-          <IconButton aria-label="delete" size="large"
-            disabled={(dataLen > 0 && minX != '00010101') ? false : true}
-             onClick={() => {
-              minXRef.current = '00010101';
-              setMinX('00010101');
-              reloadChart();
-            }}
-          >
-            <CachedIcon fontSize="large" />
-          </IconButton>
+          <ButtonGroup size="large" aria-label="Large button group">
+            <Button key="1"
+              onClick={() => {
+                minXRef.current = '20230101';
+                reloadChart();
+              }} 
+            >1년</Button>
+            <Button key="2"
+              onClick={() => {
+                minXRef.current = '20220101';
+                reloadChart();
+              }} 
+            >2년</Button>
+            <Button key="2"
+              onClick={() => {
+                minXRef.current = '20190101';
+                reloadChart();
+              }} 
+            >5년</Button>
+            <Button key="max"
+              onClick={() => {
+                minXRef.current = '00010101';
+                reloadChart();
+              }} 
+            >최대</Button>
+           </ButtonGroup>
         </div>
 	<Footer />
       </div>

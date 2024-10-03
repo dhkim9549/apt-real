@@ -91,7 +91,15 @@ export default function AptReal() {
     aptListRef.current.forEach((apt) => {
       loadAptChart(apt);
     });
- }
+  }
+
+  function getDateYearAgo(y) {
+    let date = new Date();
+    date.setFullYear(date.getFullYear() - y);
+    date = date.toISOString();
+    date = date.replaceAll('-', '').substring(0, 8);
+    return date;
+  }
 
   return (
     <div className="flex flex-col lg:flex-row lg:justify-center bg-white">
@@ -149,22 +157,28 @@ export default function AptReal() {
           <ButtonGroup size="large" aria-label="Large button group">
             <Button key="1"
               onClick={() => {
-                minXRef.current = '20230101';
+                minXRef.current = getDateYearAgo(1);
                 reloadChart();
               }} 
             >1년</Button>
             <Button key="2"
               onClick={() => {
-                minXRef.current = '20220101';
+                minXRef.current = getDateYearAgo(2);
                 reloadChart();
               }} 
             >2년</Button>
-            <Button key="2"
+            <Button key="5"
               onClick={() => {
-                minXRef.current = '20190101';
+                minXRef.current = getDateYearAgo(5);
                 reloadChart();
               }} 
             >5년</Button>
+            <Button key="10"
+              onClick={() => {
+                minXRef.current = getDateYearAgo(10);
+                reloadChart();
+              }} 
+            >10년</Button>
             <Button key="max"
               onClick={() => {
                 minXRef.current = '00010101';

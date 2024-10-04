@@ -142,7 +142,7 @@ export default function AptReal() {
       </div>
       <div ref={chartNodeRef} className="w-full lg:w-[750px] bg-slate-100">
         <AptChart setChartRef={setChartRef} />
-        <div className="px-10 pb-7 bg-white flex flex-row justify-between">
+        <div className="px-10 pb-7 bg-white flex flex-row justify-between items-center">
           <IconButton aria-label="delete" size="large"
             disabled={dataLen > 0 ? false : true}
             onClick={() => {
@@ -154,7 +154,7 @@ export default function AptReal() {
           >
             <DeleteIcon fontSize="large" />
           </IconButton>
-          <ButtonGroup size="large" aria-label="Large button group">
+          <ButtonGroup className="h-12" size="" aria-label="Large button group">
             <Button key="1"
               onClick={() => {
                 minXRef.current = getDateYearAgo(1);

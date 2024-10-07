@@ -119,7 +119,7 @@ export default function AptReal() {
           <div className="w-screen px-4 lg:w-80 lg:px-0">
             <Paper className="p-2 w-full flex flex-row justify-center gap-2">
               <TextField
-                id="aptNm" label="주택명 또는 지역명" variant="filled" size="small"
+                id="aptNm" label="주택명 또는 지역명" variant="outlined" size="small"
                 className="w-full"
                 inputProps={{min: 1, maxLength:20 }}
                 onChange={(e) => {

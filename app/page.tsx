@@ -38,7 +38,7 @@ export default function AptReal() {
     let hasApt = false;
     aptListRef.current.forEach((e) => {
       if(e.sggu == x.sggu && e.aptNm == x.aptNm && e.area == x.area) {
-	hasApt = true;
+        hasApt = true;
       }
     });
     if(hasApt) {
@@ -105,18 +105,18 @@ export default function AptReal() {
     <div className="flex flex-col lg:flex-row lg:justify-center bg-white">
       <div className="flex flex-col items-center w-full lg:w-[340px] pb-8 lg:h-screen bg-slate-100">
         <div className="bg-slate-100 lg:fixed mt-8 lg:mt-0 lg:top-8 z-10">
-	  <div className="m-4 p-4 flex flex-col items-center">
+          <div className="m-4 p-4 flex flex-col items-center">
             <div className="flex flex-row justify-center items-center">
-	      <ApartmentIcon />
+              <ApartmentIcon />
               <blockquote className="ml-2 text-2xl font-bold italic text-slate-900">
                 APT-REAL
               </blockquote>
             </div>
-	    <div>
-	      아파트 실거래가 비교
-	    </div>
-	  </div>
-	  <div className="w-screen px-4 lg:w-80 lg:px-0">
+            <div>
+              아파트 실거래가 비교
+            </div>
+          </div>
+          <div className="w-screen px-4 lg:w-80 lg:px-0">
             <Paper className="p-2 w-full flex flex-row justify-center gap-2">
               <TextField
                 id="aptNm" label="주택명 또는 지역명" variant="filled" size="small"
@@ -134,7 +134,7 @@ export default function AptReal() {
                 <Button variant="contained" size="large" className="w-20" onClick={setQuery}>조회</Button>
               </div>
             </Paper>
-	  </div>
+          </div>
         </div>
         <div className="w-full lg:mt-[200px] max-h-96 lg:max-h-full overflow-y-auto">
          {queryObj && <ProdPanel queryObj={queryObj} addAptList={addAptList} />}
@@ -187,7 +187,7 @@ export default function AptReal() {
             >최대</Button>
            </ButtonGroup>
         </div>
-	<Footer />
+        <Footer />
       </div>
     </div>
   )

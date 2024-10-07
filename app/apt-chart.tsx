@@ -26,7 +26,7 @@ export default function AptChart({setChartRef}) {
           type: "timeseries",
           tick: {
             format: "%Y-%m-%d",
-	    values: valuesArr
+            values: valuesArr
           },
         },
         y: {
@@ -34,8 +34,8 @@ export default function AptChart({setChartRef}) {
             text: "억원",
             position: ""
           },
-	  min: 0,
-	  padding: 0
+          min: 0,
+          padding: 0
         }
       },
       grid: {
@@ -52,7 +52,7 @@ export default function AptChart({setChartRef}) {
       },
       padding: {
         left: 50,
-	right: 10
+        right: 10
       },
       bindto: "#chart2"
     });

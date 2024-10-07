@@ -15,12 +15,12 @@ export default function Footer() {
                 items-center
                 justify-center
                 md:justify-start
-		gap-2
+                gap-2
               ">
-	      <ApartmentIcon />
-	      <div className="italic">
+              <ApartmentIcon />
+              <div className="italic">
                 APT-REAL
-	      </div>
+              </div>
             </h6>
             <p className="lg:text-left">
               아파트 실거래가 비교
@@ -39,8 +39,8 @@ export default function Footer() {
               Contact
             </h6>
             <p className="flex items-center justify-center md:justify-start mb-4 gap-2">
-	      <EmailIcon />
-	      dhkim9549@naver.com
+              <EmailIcon />
+              dhkim9549@naver.com
             </p>
           </div>
         </div>

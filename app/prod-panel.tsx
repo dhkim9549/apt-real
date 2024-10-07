@@ -27,8 +27,8 @@ export default function ProdPanel({queryObj, addAptList}) {
           rtnItems.map(x =>
             <ProdItem key={Math.random()} prodObj={x} addAptList={addAptList}  />
           )
-	  : <Skel />
-	}
+          : <Skel />
+        }
       </div>
     </div>
   )

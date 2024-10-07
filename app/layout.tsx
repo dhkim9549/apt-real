@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="ko" className={notoSansKR.className}>
       <body className="">
-	<div className="">
+        <div className="">
           {children}
-	</div>
+        </div>
       </body>
     </html>
   )

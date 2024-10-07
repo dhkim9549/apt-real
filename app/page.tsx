@@ -103,8 +103,8 @@ export default function AptReal() {
 
   return (
     <div className="flex flex-col lg:flex-row lg:justify-center bg-white">
-      <div className="flex flex-col items-center w-full lg:w-[340px] pb-8 lg:h-screen bg-slate-100">
-        <div className="bg-slate-100 lg:fixed mt-8 lg:mt-0 lg:top-8 z-10">
+      <div className="flex flex-col items-center w-full lg:w-[340px] pb-8 lg:h-screen bg-slate-50">
+        <div className="bg-slate-50 lg:fixed mt-8 lg:mt-0 lg:top-8 z-10">
           <div className="m-4 p-4 flex flex-col items-center">
             <div className="flex flex-row justify-center items-center">
               <ApartmentIcon />
@@ -117,9 +117,9 @@ export default function AptReal() {
             </div>
           </div>
           <div className="w-screen px-4 lg:w-80 lg:px-0">
-            <Paper className="p-2 w-full flex flex-row justify-center gap-2">
+            <div className="p-2 w-full flex flex-row justify-center gap-2">
               <TextField
-                id="aptNm" label="주택명 또는 지역명" variant="outlined" size="small"
+                id="aptNm" label="주택명 또는 지역명" variant="filled" size="small"
                 className="w-full"
                 inputProps={{min: 1, maxLength:20 }}
                 onChange={(e) => {
@@ -133,14 +133,14 @@ export default function AptReal() {
               <div className="flex flex-col justify-center">
                 <Button variant="contained" size="large" className="w-20" onClick={setQuery}>조회</Button>
               </div>
-            </Paper>
+            </div>
           </div>
         </div>
         <div className="w-full lg:mt-[200px] max-h-96 lg:max-h-full overflow-y-auto">
          {queryObj && <ProdPanel queryObj={queryObj} addAptList={addAptList} />}
         </div>
       </div>
-      <div ref={chartNodeRef} className="w-full lg:w-[750px] bg-slate-100">
+      <div ref={chartNodeRef} className="w-full lg:w-[750px] bg-slate-50">
         <AptChart setChartRef={setChartRef} />
         <div className="px-10 pb-7 bg-white flex flex-row justify-between items-center">
           <IconButton aria-label="delete" size="large"

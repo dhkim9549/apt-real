@@ -31,7 +31,7 @@ export default function Footer() {
               Useful links
             </h6>
             <p className="mb-4">
-              <a href="https://rt.molit.go.kr/" className="text-gray-600">국토교통부 실거래가</a>
+              <a href="https://rt.molit.go.kr/" target="_blank" className="text-gray-600">국토교통부 실거래가</a>
             </p>
           </div>
           <div className="">

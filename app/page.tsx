@@ -108,7 +108,7 @@ export default function AptReal() {
           <div className="m-4 p-4 flex flex-col items-center">
             <div className="flex flex-row justify-center items-center">
               <ApartmentIcon />
-              <blockquote className="ml-2 text-2xl font-bold italic text-slate-900">
+              <blockquote className="ml-2 text-2xl font-bold italic">
                 APT-REAL
               </blockquote>
             </div>
@@ -119,7 +119,7 @@ export default function AptReal() {
           <div className="w-screen px-4 lg:w-80 lg:px-0">
             <div className="p-2 w-full flex flex-row justify-center gap-2">
               <TextField
-                id="aptNm" label="주택명 또는 지역명" variant="filled" size="small"
+                id="aptNm" label="주택명 또는 지역명" variant="filled" size="large"
                 className="w-full"
                 inputProps={{min: 1, maxLength:20 }}
                 onChange={(e) => {

@@ -35,7 +35,10 @@ export default function AptChart({setChartRef}) {
             position: ""
           },
           min: 0,
-          padding: 0
+          padding: {
+            top: 30,
+            bottom: 0
+          }
         }
       },
       grid: {

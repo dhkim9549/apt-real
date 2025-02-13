@@ -12,6 +12,5 @@ export default function Skel() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

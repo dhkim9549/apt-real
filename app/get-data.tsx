@@ -8,7 +8,7 @@ export async function getAptInfo(queryObj) {
 
   let res = await fetch(
     API_URL + "/api/get-apt-info?" + "&aptNm=" + queryObj.aptNm,
-    { next: { revalidate: 600 } },
+    { next: { revalidate: 60 } },
   );
 
   let resJson = await res.json();
@@ -33,7 +33,7 @@ export async function getAptTrd(queryObj) {
       queryObj.aptNm +
       "&area=" +
       queryObj.area,
-    { next: { revalidate: 600 } },
+    { next: { revalidate: 60 } },
   );
 
   let resJson = await res.json();

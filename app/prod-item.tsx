@@ -3,9 +3,9 @@ import Button from "@mui/material/Button";
 
 export default function ProdItem({ prodObj, addAptList }) {
   function formatDate(d) {
-    return (
-      d.substring(0, 4) + "." + d.substring(4, 6) + "." + d.substring(6, 8)
-    );
+    return d
+      ? d.substring(0, 4) + "." + d.substring(4, 6) + "." + d.substring(6, 8)
+      : "";
   }
 
   return (
